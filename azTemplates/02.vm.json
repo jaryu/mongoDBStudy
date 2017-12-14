@@ -75,24 +75,7 @@
                         },
                         "diskSizeGB": "[parameters('os_disk_size')]"
                     },
-                    "dataDisks": [
-                        {
-                            "lun": 0,
-                            "name": "[parameters('dataDisk_name01')]",
-                            "createOption": "Attach",
-                            "managedDisk": {
-                                "id": "[resourceId('Microsoft.Compute/disks/', parameters('dataDisk_name01'))]"
-                            }
-                        },
-                        {
-                            "lun": 1,
-                            "name": "[parameters('dataDisk_name02')]",
-                            "createOption": "Attach",
-                            "managedDisk": {
-                                "id": "[resourceId('Microsoft.Compute/disks/', parameters('dataDisk_name02'))]"
-                            }
-                        }
-                    ]
+                    "dataDisks": []
                 },
                 "osProfile": {
                     "computerName": "[parameters('vm_name')]",

@@ -20,3 +20,11 @@ az group deployment create --name createVM --resource-group minschoMongoDBRG01 -
 --parameters nic_name=mongodbTestNic01 \
 --parameters dataDisk_name01=mongodbDataDisk01 \
 --parameters dataDisk_name02=mongodbDataDisk02
+
+# data disk attach
+az vm disk attach --vm-name mongoTestVM01 --disk mongodbDataDisk01 --lun 0 --resource-group minschoMongoDBRG01
+az vm disk attach --vm-name mongoTestVM01 --disk mongodbDataDisk02 --lun 1 --resource-group minschoMongoDBRG01
+
+#disk lun 확인
+az vm show --resource-group minschoMongoDBRG01 --name mongoTestVM01 | jq -r .storageProfile.dataDisks
+az vm show --resource-group minschoMongoDBRG01 --name mongoTestVM01 | jq -r .storageProfile.dataDisks[].lun
