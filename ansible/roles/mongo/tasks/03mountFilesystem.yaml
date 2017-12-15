@@ -6,7 +6,7 @@
   - mount:
       path: /data{{ item.0 }}
       src: UUID={{ item.1.stdout }}
-      fstype: ext4
+      fstype: '{{fstype}}'
       opts: 'noatime,nofail'
       state: mounted
     become: true

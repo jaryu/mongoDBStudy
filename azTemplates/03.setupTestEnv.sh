@@ -8,11 +8,6 @@ az group deployment create --name networkForMongoDBDeployment --resource-group m
 --parameters dnsPrefix=mongodbtest01 \
 --parameters nic_name=mongodbTestNic01
 
-# disk 두 개 만듬
-az group deployment create --name createDataDisk --resource-group minschoMongoDBRG01 --template-file 01.dataDisk.json \
---parameters dataDisk_name=mongodbDataDisk01
-az group deployment create --name createDataDisk --resource-group minschoMongoDBRG01 --template-file 01.dataDisk.json \
---parameters dataDisk_name=mongodbDataDisk02
 
 az group deployment create --name createVM --resource-group minschoMongoDBRG01 --template-file 02.vm.json \
 --parameters vm_name=mongoTestVM01 \
@@ -21,6 +16,11 @@ az group deployment create --name createVM --resource-group minschoMongoDBRG01 -
 --parameters dataDisk_name01=mongodbDataDisk01 \
 --parameters dataDisk_name02=mongodbDataDisk02
 
+# disk 두 개 만듬
+az group deployment create --name createDataDisk --resource-group minschoMongoDBRG01 --template-file 01.dataDisk.json \
+--parameters dataDisk_name=mongodbDataDisk01
+az group deployment create --name createDataDisk --resource-group minschoMongoDBRG01 --template-file 01.dataDisk.json \
+--parameters dataDisk_name=mongodbDataDisk02
 # data disk attach
 az vm disk attach --vm-name mongoTestVM01 --disk mongodbDataDisk01 --lun 0 --resource-group minschoMongoDBRG01
 az vm disk attach --vm-name mongoTestVM01 --disk mongodbDataDisk02 --lun 1 --resource-group minschoMongoDBRG01

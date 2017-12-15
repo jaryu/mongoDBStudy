@@ -7,6 +7,7 @@ luns: ['0','1']
 mountDisk : true
 # mkfs를 돌려야 하는 지?
 mkfs: true
+fstype: xfs
 
 logpath:  /data0/mongodb
 datapath: /data1/mongo
